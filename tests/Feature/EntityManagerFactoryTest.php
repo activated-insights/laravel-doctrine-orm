@@ -918,6 +918,7 @@ class EntityManagerFactoryTest extends TestCase
     {
         $this->configuration = m::mock(Configuration::class);
         $this->configuration->shouldReceive('setSQLLogger');
+        $this->configuration->shouldReceive('isNativeLazyObjectsEnabled');
 
         $this->configuration->shouldReceive('getMetadataDriverImpl')
                             ->andReturn($this->mappingDriver);
@@ -925,7 +926,7 @@ class EntityManagerFactoryTest extends TestCase
         $this->configuration->shouldReceive('setMetadataDriverImpl')
                             ->atLeast()->once();
         $this->configuration->shouldReceive('setMiddlewares')
-            ->atLeast()->once();
+                            ->atLeast()->once();
 
         $this->configuration->shouldReceive('getAutoCommit')
                             ->atLeast()->once()
